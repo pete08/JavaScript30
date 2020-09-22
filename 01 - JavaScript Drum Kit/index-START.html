@@ -59,6 +59,47 @@
 
 <script>
 
+  function playSound(e){
+    // console.log(e.keyCode);
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if(!audio) return;
+    audio.currentTime = 0;
+    audio.play();
+    key.classList.add('playing');
+    // console.log(audio)
+  };
+
+  function removeTransition(e) {
+    console.log(e);
+    if (e.propertyName !== 'transform') return;
+    this.classList.remove('playing');
+  };
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound); 
+
+
+  // window.addEventListener('keydown', function(e) {
+  //   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  //   const key = document.querySelector(`.key[daya-key="${e.keycode}"]`);
+  //   if (!audio) return;
+  //   audio.currentTime = 0;
+  //   audio.play();
+  //   key.classList.add('playing');
+  // });
+
+  // function removeTransition(e) {
+  //   if(e.propertyName !== 'transform') return;
+  //   fransform
+  //   console.log(e.transform)
+  // }
+
+
+  // const keys = document.querySelectorAll('.key');
+  // keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
 </script>
 
 
