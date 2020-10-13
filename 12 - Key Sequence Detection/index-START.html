@@ -7,6 +7,22 @@
 </head>
 <body>
 <script>
+console.clear();
+const pressed = [];
+const secret = 'wesbos' 
+
+window.addEventListener('keydown', (e) => {
+  pressed.push(e.key);
+  pressed.splice(0, pressed.length - secret.length);
+  console.log(pressed);
+  console.log(secret.split(''));
+  if (pressed.join('').includes(secret)) {
+    console.log("Secret achieved!");
+    cornify_add();
+  }
+
+});
+
 </script>
 </body>
 </html>
